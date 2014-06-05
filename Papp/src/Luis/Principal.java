@@ -3,18 +3,23 @@
  * and open the template in the editor.
  */
 package Luis;
+
+import ClaseImagen.ImagenFondo;
 import javax.swing.JFrame;
+import javax.swing.border.Border;
 /**
  *
  * @author Darwin Gomez
  */
 public class Principal extends javax.swing.JFrame {
-
+VentanaNuevo vn;
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        dtpwindow.setBorder((Border) new ImagenFondo());
+        this.setExtendedState(Principal.MAXIMIZED_BOTH);
     }
 
     /**
@@ -27,14 +32,49 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         dtpwindow = new javax.swing.JDesktopPane();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        archivomn = new javax.swing.JMenu();
+        nuevomni = new javax.swing.JMenuItem();
+        reportesmn = new javax.swing.JMenu();
+        estadimn = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventariado");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setFont(new java.awt.Font("Trebuchet MS", 0, 10)); // NOI18N
         getContentPane().add(dtpwindow, java.awt.BorderLayout.CENTER);
 
-        pack();
+        archivomn.setText("Archivo");
+
+        nuevomni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/imagesCAITA1OO.jpg"))); // NOI18N
+        nuevomni.setText("Nuevo");
+        nuevomni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevomniActionPerformed(evt);
+            }
+        });
+        archivomn.add(nuevomni);
+
+        jMenuBar2.add(archivomn);
+
+        reportesmn.setText("Reportes");
+        jMenuBar2.add(reportesmn);
+
+        estadimn.setText("Estadisticas");
+        jMenuBar2.add(estadimn);
+
+        setJMenuBar(jMenuBar2);
+
+        setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nuevomniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevomniActionPerformed
+         vn=new VentanaNuevo(); 
+         dtpwindow.add(vn);
+         vn.setVisible(true);
+        
+    }//GEN-LAST:event_nuevomniActionPerformed
 
     /**
      * @param args the command line arguments
@@ -71,6 +111,11 @@ public class Principal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu archivomn;
     private javax.swing.JDesktopPane dtpwindow;
+    private javax.swing.JMenu estadimn;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem nuevomni;
+    private javax.swing.JMenu reportesmn;
     // End of variables declaration//GEN-END:variables
 }
