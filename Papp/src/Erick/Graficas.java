@@ -9,6 +9,7 @@ package Erick;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 /**
  *
@@ -22,15 +23,12 @@ public class Graficas {
         grafica.setValue("Categoria 1", 20.5);
         grafica.setValue("Categoria 2 ", 40.6);
         grafica.setValue("Categoria 3", 75.9);
-        
-        
         JFreeChart chart = ChartFactory.createPieChart("Ventas de Categorias", grafica,true,true,true);
+        PiePlot plot=(PiePlot) chart.getPlot();
         ChartFrame frame=new ChartFrame("Primer Chart para javax0711",chart);
-        frame.pack();
         frame.setVisible(true);
-    
-    
-    
+        frame.setSize(450,500);
+  
     }
     
 }
